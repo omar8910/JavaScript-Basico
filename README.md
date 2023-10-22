@@ -1,2 +1,2 @@
 # JavaScript-Basico
-Carpeta de JavaScript
+Todos los temas y ejercicios de Js hasta ahora.
