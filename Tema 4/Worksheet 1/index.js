@@ -41,18 +41,14 @@ window.addEventListener("load", ()=>{
                 }else if(e.altKey){
                     columna.style.backgroundColor = "white";
                 }
-
+            });
+            fila.appendChild(columna);
+            boton.addEventListener("click", ()=>{
+                columna.style.backgroundColor = "white";
             });
 
-            fila.appendChild(columna);
-            
         }
         table.appendChild(fila);
-        
     }
-    boton.addEventListener("click", () =>{
-        table.style.backgroundColor= "white";
-    })
- 
 
 });
