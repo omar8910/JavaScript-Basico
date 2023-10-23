@@ -1,46 +1,58 @@
-window.onload =()=>{
+// window.onload = () => {
+//1 Captura el evento onClick del raton para que cada vez que se de un click en el body se ejecute un alert.
+
+// const body = document.querySelector("body");
+// body.addEventListener("click", () => {
+//     alert("Has hecho click");
+// });
+
+//2 Captura el movimineto del ratón, para que se muestre la posición en la que se encuentra cada momento.
+
+// const body = document.querySelector("body");
+// body.addEventListener("mousemove", (e)=> {
+//     console.log(e.clientX,e.clientY);
+// });
+
+//3 Haciendo uso del evento onLoad, muestra el tiempo transcurrido desde la carga de la pagina.
+
+// window.addEventListener("load", () => {
+//     let fecha = new Date();
+//     let seg = fecha.getSeconds();
+//     let min = fecha.getMinutes();
+//     let hora = fecha.getHours();
+//     console.log(hora + ":" + min + ":" + seg);
+// });
 
 
-// const btn = document.querySelector('button');
-const btn = document.getElementById('btn'); // Podemos referenciarnos al boton del HTML con getElementById (id="btn") o con querySelector (class="btn").
-const btnG = document.getElementById('btnG'); // Podemos referenciarnos al boton del HTML con getElementById (id="btn") o con querySelector (class="btn").
-const btnB = document.getElementById('btnB'); // Podemos referenciarnos al boton del HTML con getElementById (id="btn") o con querySelector (class="btn").
-const miH1 = document.getElementById('miH1');
+//4
 
+window.addEventListener("load", ()=>{
+    const table = document.querySelector("table");
+    const boton = document.querySelector("button");
+    for(i=0;i<100;i++){
+        const fila = document.createElement("tr");
+        for(j=0;j<100;j++){
+            const columna = document.createElement("td"); // Creamos los elementos dentro de la tabla
+            columna.addEventListener("mouseover", (e)=>{ // Le damos los eventos a la COLUMNA
+                if(e.ctrlKey){
+                    columna.style.backgroundColor = "red";
+                }else if(e.shiftKey){
+                    columna.style.backgroundColor = "blue";
+                }else if(e.altKey){
+                    columna.style.backgroundColor = "white";
+                }
 
-function random(number){
-    return Math.floor(Math.random() * (number+1));
-}
+            });
 
-// El primer parámetro del addEventListener es el evento que queremos escuchar y el segundo es la función que queremos que se ejecute cuando se produzca el evento.
-// Tenemos eventos como "click" (un solo click), "dblclick" (doble click), "focus" (al tener el foco con la tecla TAB), "blur" (al perder el foco)
+            fila.appendChild(columna);
+            
+        }
+        table.appendChild(fila);
+        
+    }
+    boton.addEventListener("click", () =>{
+        table.style.backgroundColor= "white";
+    })
+ 
 
-btn.addEventListener('click', pintarColorRandom); // Añadimos un evento al botón. En este caso, cuando se haga click en el botón, se ejecutará la función pintarColorRandom.
-btn.addEventListener('blur', ()=> document.body.style.backgroundColor = "white") ; // Al ser el mismo botón, al hacer click se ejecutarán las dos funciones.
-// btn.addEventListener('click', levantaAlert);
-btnG.addEventListener('click', pintarColorRandom);
-btnB.addEventListener('click', pintarColorRandom);
-
-
-function pintarColorRandom(e) { // En vez de poner la función dentro del addEventListener, podemos crearla fuera y llamarla desde el addEventListener.
-    console.log(e); // El parámetro e es el evento que se ha producido. En este caso, el evento es el click.
-    const rndCol = 'rgb(' + random(255) + ',' + random(255) + ',' + random(255) + ')';
-    document.body.style.backgroundColor = e.target.innerHTML; //Accedemos al elemento que ha producido el evento con e.target y le cambiamos el color de fondo.
-    console.log("Has pulsado el botón");
-};
-
-// function levantaAlert(){
-    // console.log("Funciona");
-// }
-
-
-
-
-
-
-
-
-
-
-
-}
+});
