@@ -57,16 +57,35 @@ window.onload = () => {
 
 //9 Crea una página web que haciendo uso de eventos permita arrastrar una imagen haciendo uso del raton (al pulsar sobre la imagen se debe iniciar el arrastre, mientras el ratón esté pulsado se debe mover por la pantalla y al soltar el botón del ratón se debe quedar en esa posición).
 
-const imagen = document.querySelector("img");
-const body = document.querySelector("body");
+var imagen = document.querySelector("img");
+var movimientoImagen = false;
 
-imagen.addEventListener("mousedown", (e) => {
-    imagen.style.left = e.clientX
-    imagen.style.top = e.clientY
-    body.addEventListener("mousemove", (e) => {
-        imagen.style.left = `${e.clientX}px` 
-        imagen.style.top = `${e.clientY}px`
-    })
-})
+// imagen.addEventListener("mousedown", (e) => {
+//     imagen.style.left = e.clientX;
+//     imagen.style.top = e.clientY;
+//     document.addEventListener("mousemove", mouseEvent)
+//     document.addEventListener("mouseup", (e) =>{
+//         document.removeEventListener("mousemove", mouseEvent);
+//     });
+// });
+
+// function mouseEvent(e){
+//         imagen.style.left = `${e.clientX-20}px` ;
+//         imagen.style.top = `${e.clientY-20}px`;
+// }
+
+imagen.addEventListener("click", (e)=> {
+    imgX = e.offsetX;
+    imgY = e.offsetY;
+    movimientoImagen = !movimientoImagen;
+});
+
+document.addEventListener("mousemove", (e)=> {
+    if(movimientoImagen){
+        imagen.style.left = e.clientX-imgX+"px" ;
+        imagen.style.top = e.clientY-imgY + "px";    
+
+    }
+});
 };
 
