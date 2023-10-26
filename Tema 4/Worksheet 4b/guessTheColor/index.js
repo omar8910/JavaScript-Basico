@@ -69,7 +69,7 @@ window.onload = () =>{
     // Cambia la dificultad segun el boton que se presione, si es facil se muestran 3 cuadrados, si es dificil se muestran 6.   
     function cambiarDificultad(){
         this.classList.add("selected");
-        if(this.textContent === "Easy"){ // this hace referencia al boton que se presiono o al que se le hizo click
+        if(this.textContent === "Fácil"){ // this hace referencia al boton que se presiono o al que se le hizo click
             numCuadrados = 3; 
             botonesDificultad[1].classList.remove("selected"); // .classList permite agregar o quitar clases de un elemento
             for(var i = 3; i < cuadrados.length; i++){
