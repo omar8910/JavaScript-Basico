@@ -76,6 +76,7 @@ header{
     background-color: #7bcdd6;
     cursor: pointer;
     transition: all 0.3s ease-in-out;
+    border: 1px solid #000000;
 } 
 
 h1 {
