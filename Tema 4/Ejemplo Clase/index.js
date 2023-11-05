@@ -1,6 +1,4 @@
-window.onload =()=>{
-
-
+function asociaEventos(){
 // const btn = document.querySelector('button');
 const btn = document.getElementById('btn'); // Podemos referenciarnos al boton del HTML con getElementById (id="btn") o con querySelector (class="btn").
 const btnG = document.getElementById('btnG'); // Podemos referenciarnos al boton del HTML con getElementById (id="btn") o con querySelector (class="btn").
@@ -8,9 +6,6 @@ const btnB = document.getElementById('btnB'); // Podemos referenciarnos al boton
 const miH1 = document.getElementById('miH1');
 
 
-function random(number){
-    return Math.floor(Math.random() * (number+1));
-}
 
 // El primer parámetro del addEventListener es el evento que queremos escuchar y el segundo es la función que queremos que se ejecute cuando se produzca el evento.
 // Tenemos eventos como "click" (un solo click), "dblclick" (doble click), "focus" (al tener el foco con la tecla TAB), "blur" (al perder el foco)
@@ -21,6 +16,15 @@ btn.addEventListener('blur', ()=> document.body.style.backgroundColor = "white")
 btnG.addEventListener('click', pintarColorRandom);
 btnB.addEventListener('click', pintarColorRandom);
 
+document.body.addEventListener("mousemove", (e)=>{
+    console.log(e.clientX + " ctrlKey="+e.ctrlKey);
+})
+}
+
+
+function random(number){
+    return Math.floor(Math.random() * (number+1));
+}
 
 function pintarColorRandom(e) { // En vez de poner la función dentro del addEventListener, podemos crearla fuera y llamarla desde el addEventListener.
     console.log(e); // El parámetro e es el evento que se ha producido. En este caso, el evento es el click.
@@ -29,18 +33,11 @@ function pintarColorRandom(e) { // En vez de poner la función dentro del addEve
     console.log("Has pulsado el botón");
 };
 
+
+
 // function levantaAlert(){
     // console.log("Funciona");
 // }
 
 
 
-
-
-
-
-
-
-
-
-}
