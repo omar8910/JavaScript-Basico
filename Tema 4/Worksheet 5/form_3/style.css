@@ -1,0 +1,79 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+:root{
+    --color: peachpuff;
+    --background: rgb(251, 150, 166);
+}
+
+body{
+    background-color: var(--background);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    width: 300px;
+
+}
+
+#usuario{
+    /* margin-bottom: 10px; */
+    outline: none;
+    border: none;
+    border-bottom: 3px solid var(--color);
+    background-color: inherit;
+    text-align: center;
+    width: 200px;
+    height: 30px;
+    color: var(--color);
+    padding: 30px;
+    font-size: 30px;
+
+}
+
+#usuario::placeholder{
+    color: var(--color);
+    font-size: 30px;
+}
+
+#usuario:focus{
+    outline: none;
+}
+
+ul{
+    margin-bottom: 10px;
+    color: var(--color);
+    font-weight: lighter;
+}
+
+ul li{
+    line-height: 180%;
+}
+
+#submit{
+    margin-top: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: var(--color);;
+    width: 100px;
+    height: 30px;
+    cursor: pointer;
+    color: var(--background);
+}
+
+#submit:hover{
+    background-color: rgb(255, 255, 255);
+
+}
