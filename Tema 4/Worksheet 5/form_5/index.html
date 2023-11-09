@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tarjeta de crédito</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="index.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="frontCreditCard">
+            <header>
+                <h2>EL VISA</h2>
+            </header>
+            <section id="numbers">
+                <div class="fourNumbers">
+                    <span class="creditNumber">#</span>
+                    <span class="creditNumber">#</span>
+                    <span class="creditNumber">#</span>
+                    <span class="creditNumber">#</span>
+                </div>
+                <div class="fourNumbers">
+                    <span class="creditNumber">#</span>
+                    <span class="creditNumber">#</span>
+                    <span class="creditNumber">#</span>
+                    <span class="creditNumber">#</span>
+                </div>
+                <div class="fourNumbers">
+                    <span class="creditNumber">#</span>
+                    <span class="creditNumber">#</span>
+                    <span class="creditNumber">#</span>
+                    <span class="creditNumber">#</span>
+                </div>
+                <div class="fourNumbers">
+                    <span class="creditNumber">#</span>
+                    <span class="creditNumber">#</span>
+                    <span class="creditNumber">#</span>
+                    <span class="creditNumber">#</span>
+                </div>
+            </section>
+            <section id="otherInfo">
+                <div id="owner">
+                    <span>Card Owner</span>
+                    <span id="ownerName">FULL NAME</span>
+                </div>
+                <div id="date">
+                    <span>Expires</span>
+                    <div>
+                        <span id="month">MM</span>/
+                        <span id="year">YY</span>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <div class="backCreditCard">
+            <span id="cardCVV">CVV</span>
+        </div>
+        <form action="" id="formulario">
+            <section id="creditCardNumber">
+                <div class="input-group">
+                    <label for="">Card Number</label>
+                    <input type="text" id="cardNumber">
+                </div>
+                <div class="input-group">
+                    <label for="">Card Owner</label>
+                    <input type="text" id="cardOwner">
+                </div>
+            </section>
+            <section id="otherData">
+                <div class="input-group">
+                    <label for="">Expiration Data</label>
+                    <div class="expirationData">
+                        <select name="month" id="months">
+                            <option value="MM">MM</option>
+                            <option value="01">01</option>
+                            <option value="02">02</option>
+                            <option value="03">03</option>
+                            <option value="04">04</option>
+                            <option value="05">05</option>
+                            <option value="06">06</option>
+                            <option value="07">07</option>
+                            <option value="08">08</option>
+                            <option value="09">09</option>
+                            <option value="10">10</option>
+                            <option value="11">11</option>
+                            <option value="12">12</option>
+                        </select>
+                        <select name="year" id="years">
+                            <option value="YY">YY</option>
+                            <option value="22">2022</option>
+                            <option value="23">2023</option>
+                            <option value="24">2024</option>
+                            <option value="25">2025</option>
+                            <option value="26">2026</option>
+                            <option value="27">2027</option>
+                            <option value="28">2028</option>
+                            <option value="29">2029</option>
+                            <option value="30">2030</option>
+                            <option value="31">2031</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="input-group">
+                    <label for="">CVV</label>
+                    <input type="text" id="cvv">
+                </div>
+            </section>
+            <button type="submit" id="submit">Submit</button>
+        </form>
+    </div>
+</body>
+</html>

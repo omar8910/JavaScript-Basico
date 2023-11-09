@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario Crowdrise</title>
+    <script src="index.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="imagen"></div>
+        <div class="contenido">
+            <header>
+                <h1>Welcome to Crowdrise</h1>
+                <h2>Let's get you all set up so you can verify your nonprofit
+                    and begin setting up your first campaign!
+                </h2>
+            </header>
+            <main>
+                <p id="login">Already have an account? <a href="">Log in.</a></p>
+                <form action="" id="formulario">
+                    <section class="inputs">
+                        <div class="grupo-inputs">
+                            <label for="nombre">First Name</label>
+                            <input type="text" name="nombre" placeholder="Your name"  class="mainInputs">
+                        </div>
+                        <div class="grupo-inputs">
+                            <label for="apellidos">Last Name</label>
+                            <input type="text" name="apellidos" placeholder="Your last name" class="mainInputs">
+                        </div>
+                        <div class="grupo-inputs">
+                            <label for="teléfono">Phone</label>
+                            <input type="tel" name="telefono" placeholder="Your phone number" class="mainInputs">
+                        </div>
+
+                        <div class="grupo-inputs">
+                            <label for="correo">Email</label>
+                            <input type="email" name="correo" placeholder="Your email" class="mainInputs">
+                        </div>
+
+                        <div class="grupo-inputs">
+                            <label for="password">Password</label>
+                            <input type="password" name="password" placeholder="Your password" class="mainInputs">
+                        </div>
+
+                        <div class="grupo-inputs">
+                            <label for="confirmar_password">Confirm Password</label>
+                            <input type="password" name="confirmar_password" placeholder="Confirm your password" class="mainInputs">
+                        </div>
+                    </section>
+                    <section class="terms">
+                        <div class="grupo-inputs">
+                            <input type="checkbox" name="terms">
+                            <label for="terms">Yes, I want to receive Crowdrise's emails</label>
+                        </div>
+                        <div class="grupo-inputs">
+                            <input type="checkbox" name="terms" id="terms">
+                            <label for="terms">I agree to Crowdrise's <a href="">Terms of Use</a> and <a href="">Privacy Policy</a></label>
+                        </div>
+                    </section>
+                    <button type="submit" id="submit">Sign Up</button>
+                </form>
+            </main>
+            <footer>
+                <p>Don't work for a nonprofit?<a href="">You can still fundraise for one</a></p>
+            </footer>
+            <div id="mensajesDeError"></div>
+        </div>
+    </div>
+</body>
+</html>
