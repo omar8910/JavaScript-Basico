@@ -1,8 +1,26 @@
 window.onload = () => {
-    arrayFrutas = ["coconut", "coconut", "grape", "grape", "lemon", "lemon", "pineapple", "strawberry", "strawberry"];
+    arrayFrutas = ["coconut", "coconut", "grape", "grape", "lemon", "lemon", "pineapple", "pineapple", "strawberry", "strawberry"];
     cartasGiradas = [];
     parejasEncontradas = [];
     iniciado = false;
+    
+    cartasReferencia = generarCartas(arrayFrutas);
+    for(img of document.getElementsByTagName("img")){
+        img.addEventListener("dragstart", (e) => { // Para que no se pueda arrastrar la imagen.
+            e.preventDefault();
+        });
+    }
+    for (carta of document.getElementsByClassName("carta_volteada_trasera")) {
+        carta.children[0].src = `./img/${cartasReferencia[parseInt(carta.children[0].id)]}_card.png`; // Utilizo parseInt para que el id de la carta sea un numero y coincida con un indice del array.
+    }
+    cartas = document.getElementsByTagName("img");
+    document.addEventListener('dblclick',(e)=>{
+        e.preventDefault();
+        e.stopPropagation();
+    })
+    for(carta of cartas){
+        carta.addEventListener("click", clickCarta);
+    }
 }
 
 function generarCartas(arrayFrutas) {
@@ -18,13 +36,15 @@ function ocultarCarta(carta) {
     carta.children[0].classList.remove("carta");
 }
 
-function clickActivadoCarta(carta) {
-    carta.addEventListener("click", clickCarta());
+function desactivarClickCarta(carta) {
+    carta.removeEventListener("click", clickCarta, false);
 }
 
-function desactivarClickCarta(carta) {
-    carta.removeEventListener("click", clickCarta());
+function clickActivadoCarta(carta) {
+    carta.addEventListener("click", clickCarta);
 }
+
+
 
 function iniciarCronometro() {
     intervalo = setInterval(() => {
@@ -32,16 +52,16 @@ function iniciarCronometro() {
         minutos = document.getElementById("minutos");
         formateoSegundos = parseInt(segundos.innerHTML);
         formateoMinutos = parseInt(minutos.innerHTML);
-        if (formateoSegundos < 60) {
-            if (formateoSegundos < 10) {
+        if (formateoSegundos < 59) {
+            if (formateoSegundos < 9) {
                 segundos.innerHTML = "0" + (++formateoSegundos);
             } else {
                 segundos.innerHTML++;
             }
         } else {
             segundos.innerHTML = "00";
-            if (formateoMinutos < 60) {
-                if (formateoMinutos < 10) {
+            if (formateoMinutos < 59) {
+                if (formateoMinutos < 9) {
                     minutos.innerHTML = "0" + (++formateoMinutos);
                 } else {
                     minutos.innerHTML++;
@@ -60,8 +80,7 @@ function clickCarta(e) {
     if (!(cartasGiradas.includes(carta))) {
         cartasGiradas.push(carta);
     }
-    imagen = carta.querySelector(".carta_volteada_trasera img");
-    desactivarClickCarta(carta.imagen);
+    desactivarClickCarta(carta.children[0].children[1].children[0]);
     mostrarCarta(carta);
     if (cartasGiradas.length == 2) {
         for (carta of cartas) {
@@ -74,7 +93,7 @@ function clickCarta(e) {
             }
 
             for (carta of parejasEncontradas) {
-                carta.imagen('click', clickCarta) // Lo mismo necesitamos otro parametro.
+                carta.children[0].children[1].children[0].removeEventListener('click', clickCarta, false) // Lo mismo necesitamos otro parametro.
             }
         }, 1000);
 
@@ -82,12 +101,10 @@ function clickCarta(e) {
 }
 
 function comprobarCartas() {
-    imagen = carta.children[0].children[1].children[0];
-
     for (carta of cartas) {
         desactivarClickCarta(carta);
     }
-    if(cartasGiradas[0].imagen.src != cartasGiradas[1].imagen.src){
+    if(cartasGiradas[0].children[0].children[1].children[0].src != cartasGiradas[1].children[0].children[1].children[0].src){
         setTimeout(() => {
             ocultarCarta(cartasGiradas[0]);
             ocultarCarta(cartasGiradas[1]);
@@ -99,18 +116,32 @@ function comprobarCartas() {
         if(parejasEncontradas.length == 10){
             window.clearInterval(intervalo);
             intervalo = null;
+            setTimeout(() => {
+                for(carta of document.getElementsByClassName("carta_volteada")){
+                    carta.style.opacity = 1;
+                }
+            victoriaH2 = document.getElementById("victoria");
+            victoriaH2.textContent = "Enhorabuena, has ganado!";
+            resetearDiv = document.getElementById("resetear");
+            resetearBoton = document.createElement("button");
+            resetearBoton.innerHTML = "Jugar otra vez";
+            resetearBoton.addEventListener("click", () =>{
+                location.reload(); // Metodo de la API de window que recarga la pagina.
+            })
+            resetearDiv.appendChild(resetearBoton);
             
+            }, 1000);
+        }else{
+            setTimeout(() => {
+                cartasGiradas = [];
+
+            }, 1500);
+            setTimeout(() => {
+                cartasGiradas[0].style.opacity = 0;
+                cartasGiradas[1].style.opacity = 0;
+            }, 1200);
+
         }
     }
-
-
-
-
-
-
-
-
-
-
-
 }
+

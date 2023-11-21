@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=0.0">
     <title>Pairs Game</title>
     <script src="index.js"></script>
     <link rel="stylesheet" href="styles.css">
@@ -13,9 +13,20 @@
     <h1>JAVASCRIPT PAIRS GAME</h1>
     <h2>CLICK ANY CARD TO BEGIN</h2>
     <div class="cronometro">
-        <span id="minutos"></span><span>:</span><span id="segundos"></span>
+        <span id="minutos">00</span><span>:</span><span id="segundos">00</span>
     </div>
     <div id="cartas">
+        <div class="carta_volteada" id="0">
+            <div class="carta_volteada_contenido">
+                <div class="carta_volteada_frontal">
+                    <img id="0" src="./img/card.png" />
+                </div>
+                <div class="carta_volteada_trasera">
+                    <img id="0" src="" />
+                </div>
+            </div>
+        </div>
+
         <div class="carta_volteada" id="1">
             <div class="carta_volteada_contenido">
                 <div class="carta_volteada_frontal">
@@ -111,17 +122,6 @@
                 </div>
                 <div class="carta_volteada_trasera">
                     <img id="9" src="" />
-                </div>
-            </div>
-        </div>
-
-        <div class="carta_volteada" id="10">
-            <div class="carta_volteada_contenido">
-                <div class="carta_volteada_frontal">
-                    <img id="10" src="./img/card.png" />
-                </div>
-                <div class="carta_volteada_trasera">
-                    <img id="10" src="" />
                 </div>
             </div>
         </div>
