@@ -93,8 +93,6 @@ hr{
 }
 
 #añadirLibro{
-/* Hazme un boton super bonito */
-
     background-color: #4CAF50; /* Green */
     border: 1px solid black;
     color: white;
@@ -103,6 +101,7 @@ hr{
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
+    cursor: pointer;
 }
 
 .añadirLibro:hover{

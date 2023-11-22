@@ -1,96 +1,100 @@
-class Book{
-    constructor(tit, aut, gen)
-    {
-        this.title = tit;
-        this.genre = gen;
-        this.author = aut;
+class Book {
+    constructor(title, genre, author) {
+        this.title = title;
+        this.genre = genre;
+        this.author = author;
         this.read = false;
-        this.readDate = null;
+        this.date = null;
     }
 }
 
-class BookList{
-    constructor()
-    {
-        this.books = [];
-        this.currentBook = 0;
+class Booklist {
+    constructor() {
+        this.arrayBooks = [];
+        this.readBooks = 0;
     }
 
-    add(book)
-    {
-        this.books.push(book);
+    add(book) {
+        if (this.arrayBooks.length == 0) {
+            this.arrayBooks.push(book);
+        } else {
+            for (let i = 0; i < this.arrayBooks.length; i++) {
+                if (this.arrayBooks[i].title == book.title) {
+                    return alert("El libro ya existe");
+                }
+            }
+            this.arrayBooks.push(book);
+        }
     }
 
-    finishCurrentBook()
-    {
-        if (this.currentBook<this.books.length)
-        {
-            this.books[this.currentBook].read=true;
-            this.books[this.currentBook].readDate = new Date();
-            this.currentBook++;
+    finishCurrentBook() {
+        if (this.readBooks < this.arrayBooks.length) {
+            this.arrayBooks[this.readBooks].read = true;
+            this.arrayBooks[this.readBooks].date = (`${(new Date()).toLocaleDateString("es-ES")} ${(new Date().getHours())}:${(new Date().getMinutes())}:${(new Date().getSeconds())}`);
+            this.readBooks++;
+        }
+    }
 
+    numberOfBooksRead() {
+        return this.arrayBooks.filter(books => books.read).length; // Filtramos los libros que han sido leídos y devolvemos la longitud del array
+    }
+
+    numberOfBooksNotRead() {
+        return this.arrayBooks.length - this.readBooks;
+    }
+
+    numberOfAllBooks() {
+        return this.arrayBooks.length;
+    }
+}
+
+
+
+
+window.onload = () => {
+    let arrayLibros = new Booklist();
+    botonAñadir = document.querySelector("#añadirLibro");
+    clickListaLectura = document.querySelector("#listaLectura")
+
+    botonAñadir.addEventListener("click", () => {
+        titulo = document.querySelector("#titulo").value;
+        genero = document.querySelector("#genero").value;
+        autor = document.querySelector("#autor").value;
+        if (titulo == "" || genero == "" || autor == "") {
+            return alert("Rellena todos los campos");
+        } else {
+            arrayLibros.add(new Book(titulo, genero, autor)); // Creamos un libro con el valor de los inputs y lo añadimos al array
+            mostrarListaLibros(arrayLibros);
+            titulo = document.querySelector("#titulo").value = "";
+            genero = document.querySelector("#genero").value = "";
+            autor = document.querySelector("#autor").value = "";
         }
 
+    });
+
+
+    function mostrarListaLibros(arrayLibros) {
+        document.querySelector("#listaLectura").innerHTML = "";
+        arrayLibros.arrayBooks.forEach(libro => {
+            estado = libro.read ? "Leído" : "No leído";
+            fecha = libro.date ? libro.date : (`${(new Date()).toLocaleDateString("es-ES")} ${(new Date().getHours())}:${(new Date().getMinutes())}:${(new Date().getSeconds())}`);
+            libroAñadido = `<li>Titulo: ${libro.title}</li> <br>
+            <li>Autor: ${libro.author}</li><br>
+            <li>Genero: ${libro.genre}</li><br>
+            <li>Fecha: ${fecha}</li><br>
+            <li>Estado: ${estado}</li><br>
+            <hr> <br>`;
+            document.querySelector("#listaLectura").innerHTML += libroAñadido;
+        });
+        document.querySelector("#contadorLibros").innerHTML =`${arrayLibros.numberOfBooksRead()} de ${arrayLibros.numberOfAllBooks()}`;
+
     }
 
-    get numberBooksRead()
-    {
-        return this.books.filter( (book)=> book.read).length;
-    }
+    clickListaLectura.addEventListener("click", () => {
+        arrayLibros.finishCurrentBook();
+        mostrarListaLibros(arrayLibros);
+    });
 
-    get numberBooksNotReadYet()
-    {
-        return this.books.length - this.numberBooksRead;
-    }
-
-    get totalBooks(){
-        return this.books.length;
-    }
 
 }
 
-
-window.onload = function(){
-    var myBookList = new BookList();
-
-    document.querySelector("button").addEventListener("click",()=>{
-        var titulo = document.getElementById("titulo").value;
-        var genero = document.getElementById("genero").value;
-        var autor = document.getElementById("autor").value;
-        myBookList.add(new Book(titulo,autor,genero));
-
-        mostrarListaLibros(myBookList);
-    });
-
-    document.getElementById("listaLectura").addEventListener("click",()=>{
-        myBookList.finishCurrentBook();
-        mostrarListaLibros(myBookList);
-    });
-
-    function mostrarListaLibros(lista){
-        document.getElementById("listaLectura").innerHTML = "";
-        lista.books.forEach((libro)=>{
-            var libroLeido;
-
-            if(!libro.read){
-                libroLeido = "No leido";
-            }
-            else{
-                libroLeido = "Leido";
-            }
-
-            libroAñadido = `<li>Titulo: ${libro.title} <br> Autor: ${libro.author} <br> Genero: ${libro.genre} <br> Estado: ${libroLeido} <br> Fecha de lectura: ${libro.readDate} </li>`;
-                
-            document.getElementById("listaLectura").innerHTML += libroAñadido;
-
-
-
-
-
-        });
-
-        document.getElementById("contadorLibros").innerHTML = `${lista.numberBooksRead} of ${lista.totalBooks}`;
-
-    }
-
-};
