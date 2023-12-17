@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<div id="contenedor">
+<h2 id="demo">The XMLHttpRequest Object</h2>
+<button type="button" onclick="loadDoc()">Change Content</button>
+</div>
+
+<script>
+function loadDoc() {
+  const xhttp = new XMLHttpRequest();
+  xhttp.onload = function() {
+    //Recibo la respuesta del servidor y ya maqueto como quiera.
+    respuesta = JSON.parse(this.responseText); // Si fuese un JSON, lo parseo para poder acceder a sus propiedades..
+    document.getElementById("demo").innerHTML = respuesta.nombre;
+  }
+  xhttp.open("GET", "prueba.txt",true); // El true es para que sea asincrono, eso significa que no se va a esperar a que se ejecute la funcion para seguir con el codigo.
+  xhttp.send();
+}
+</script>
+
+</body>
+</html>

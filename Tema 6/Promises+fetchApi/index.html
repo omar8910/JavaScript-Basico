@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promesas</title>
+</head>
+
+<body>
+
+    <script>
+        // miPromesa = new Promise((resolve, reject) => {
+        //     // Ejemplo 1
+        //     // setTimeout(() =>{
+        //     // aleatorio = Math.random();
+        //     // console.log(`Numero generado: ${aleatorio}`);
+        //     //   if( aleatorio > 0.5){
+        //     //     resolve(aleatorio);
+        //     //   }
+        //     //   else{
+        //     //     reject();
+        //     //   }
+        //     // },3000);
+
+            
+        //     // Ejemplo 2
+        //     let request = new XMLHttpRequest();
+        //     request.open('GET', "../prueba/prueba.txt");
+        //     request.onload = function () {
+        //         if (request.status == 200) {
+        //             resolve(request.responseText);
+        //         }
+        //         else {
+        //             reject("File not found");
+        //         }
+        //     };
+        //     request.send();
+
+
+        // });
+
+        // // Ejecución de la promesa
+        // miPromesa.then((datos) => { // Le puedo pasar dentro de la primera función un parámetro diferente a aleatorio 
+        //     console.log("Promesa cumplida correctamente: " + datos);
+        // }, (e) => {
+        //     console.log("Error en la promesa "+ e);
+        // })
+        // console.log("Lanzada promesa")
+
+
+        // Uso de Fetch (API).
+        // Esto es como una petición AJAX pero con promesas.
+        fetch("../prueba/prueba.txt").then((d)=> d.text()).then((texto) => console.log(texto)); // Recibirá un objeto de tipo Response
+        // Se utilizan dos then porque el primero devuelve un objeto de tipo Response y el segundo devuelve el texto.
+    
+    
+    </script>
+
+
+
+</body>
+
+</html>

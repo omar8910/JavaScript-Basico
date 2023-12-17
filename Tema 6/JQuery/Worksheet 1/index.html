@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JQuery WS 1</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <style>
+        ul:first-of-type {
+            list-style-type: number;
+        }
+
+        ul:last-of-type {
+            list-style-type: square;
+        }
+    </style>
+
+
+</head>
+
+<body>
+    <!-- Ejercicio 5 -->
+    <!-- <ul>
+        Lista 1:
+        <li>Tortilla</li>
+        <li>Jamón</li>
+        <li>Queso</li>
+    </ul>
+    <ul>
+        Lista 2:
+        <li>Coca Cola</li>
+        <li>Fanta</li>
+        <li>Sprite</li>
+    </ul> -->
+
+    <!-- Ejercicio 8  -->
+    <div>
+        <h3>Primera noticia</h3>
+        <p> Lorem ipsum dolor, sit amet consectetur adipisicing elit. Magni non, ratione aliquid atque reiciendis modi
+            natus voluptatem tempora, molestiae soluta dolorum obcaecati veritatis exercitationem perspiciatis odit,
+            eaque neque laudantium. Dolore!</p>
+    </div>
+
+    <div>
+        <h3>Segunda noticia</h3>
+        <p> Lorem ipsum dolor, sit amet consectetur adipisicing elit. Magni non, ratione aliquid atque reiciendis modi
+            natus voluptatem tempora, molestiae soluta dolorum obcaecati veritatis exercitationem perspiciatis odit,
+            eaque neque laudantium. Dolore!</p>
+    </div>
+
+    <div>
+        <h3>Tercera noticia</h3>
+        <p> Lorem ipsum dolor, sit amet consectetur adipisicing elit. Magni non, ratione aliquid atque reiciendis modi
+            natus voluptatem tempora, molestiae soluta dolorum obcaecati veritatis exercitationem perspiciatis odit,
+            eaque neque laudantium. Dolore!</p>
+    </div>
+
+    <script>
+        // Ejercicio 5
+        // $(document).ready(() => {
+        //     $("li:first-of-type").click(function(){
+        //         $(this).hide(1000);
+        //     });
+
+        // });
+
+        // Ejercicio 8
+        $(document).ready(() => {
+            $("div:first-of-type").css("font-size", "20px");
+            $("div:nth-of-type(2)").css("font-size", "30px");
+            $("div:last-of-type").css("font-size", "10px");
+
+            $("h3").click(function () {
+                $(this).toggle(1000);
+            })
+
+            $("p").on({
+                click: function(){
+                    $("h3").show(1000);
+                },
+
+                mouseenter: function(){
+                    $(this).css("background-color", "lightgray");
+                },
+
+                mouseleave: function(){
+                    $(this).css("background-color", "white");
+                }
+            })
+        })
+
+
+
+    </script>
+</body>
+
+</html>

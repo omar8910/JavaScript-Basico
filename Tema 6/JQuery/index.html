@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+</head>
+
+<body>
+    <button> Pulsame</button>
+    <div id="test" class="test">Me voy a ocultar</div>
+    <p>Un párrafo sin clase</p>
+    <h1 class="test">Titulo</h1>
+    <div>Yqse</div>
+
+    <script>
+        // Esto lo mismo que el "window.onload" pero con JQuery:
+        $(document).ready(() => {
+            $("button").click(function(){
+                $("h1").load("../prueba/prueba.txt");
+                $.get("../prueba/prueba.txt", function(data, status){
+                    datos = JSON.parse(data);
+                    console.log(datos);
+
+                });
+            });
+
+            // $("div").mouseenter(function () { // Para algunas cosas de JQuery en vez de usar una funcion arrow se debe usar una funcion anonima.
+            //     console.log("Entrada");
+            //     $(this).css("background-color", "yellow");
+            // });
+
+            // $("div").mouseleave(function () {
+            //     console.log("Salida");
+            //     $(this).css("background-color", "white");
+
+            // });
+
+            // Esto es lo mismo que lo de arriba pero con un método "on()" que permite añadir varios eventos a la vez.
+            // $("div").on({
+            //     mouseenter: function(){
+            //         // $(this).css("background-color", "lightgray");
+            //         $(this).hide(1000);
+            //     },
+            //     mouseleave: function(){
+            //         $(this).css("background-color", "lightblue");
+            //     },
+            //     click: function(){
+            //         $(this).css("background-color", "yellow");
+            //     }
+            
+            // })
+
+
+        });
+
+
+    </script>
+</body>
+
+</html>

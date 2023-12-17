@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+
+<body>
+    <div id="container">
+        <!-- <span>{{ message }}</span>
+        <br>
+        <span v-html="messageInterpretadoComoHTML"></span> <!-- Sintaxis de como interpretar mi variable "message" como HTML con "v-html" 
+        <h1>{{titulo}}</h1> --> 
+        Su nombre es: <span>{{nombre}}</span>
+        <p>
+            <button v-on:click="nombre='Omar'">Cambiar nombre</button>            
+            <input type="text" name="" id="" v-model="nombre"> <!-- EL v-model asocia el contenido del input con el contenido de la variable y se guarda automáticamente en dicha variable -->
+            <button v-on:click="cambiarNombre()">Cambiar nombre</button>            
+
+        </p>
+
+        <!-- <button v-on:click="puntos++">Sumar puntos</button> -->
+        <button @click="puntos++">Sumar puntos</button> <!-- Sintaxis de como sumar puntos con "v-on:click" o "@click" -->
+        <span>{{puntos}}</span>
+    </div> <!-- Sintaxis de como mostrar mi variable "message" {{message}}--> 
+
+    <script>
+        const { createApp } = Vue
+
+        createApp({
+            data() {
+                return {
+                    message: 'Esto es una prueba!',
+                    titulo: "Esto es un titulo",
+                    messageInterpretadoComoHTML: '<b>Esto es un texto en negrita</b>',
+                    nombre: 'Juan',
+                    puntos: 0
+                }
+            },
+            methods: {
+                cambiarNombre() {
+                    console.log(this.nombre)
+                },
+                otroMetodo(){
+
+                }
+            }
+        }).mount('#container')
+    </script>
+
+</body>
+
+</html>

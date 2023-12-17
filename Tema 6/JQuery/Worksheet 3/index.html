@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <style>
+        /* Hazme los div cuadrados */
+        div {
+            width: 40px;
+            height: 40px;
+            background-color: red;
+            margin: 5px;
+            display: inline-block;
+            position: relative;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- EJercicio 1 -->
+    <!-- <table border="1">
+        <tr>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td>&nbsp;</td>
+        </tr> -->
+
+    <!-- Ejercicio 3 -->
+    <!-- <table border="1">
+        <tr>
+            <td>1</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>2</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>4</td>
+            <td></td>
+        </tr>
+        </table> -->
+
+    <!-- Ejercicio 7 -->
+    <!-- <button>Púlsame</button>
+    <div>Animando</div>
+    <button>Eliminando animaciones</button> -->
+
+    <!-- Ejercicio 8 -->
+    <!-- <button>Púlsame</button><br>
+    <div></div><br>
+    <div></div><br>
+    <div></div><br>
+    <div></div><br>
+    <div></div> -->
+
+    <!-- Ejercicio 9 -->
+    <!-- <button id="start">Start</button>
+    <button id="stop">Stop</button>
+    <div></div> -->
+
+    <!-- Ejercicio 10 -->
+    <form>
+        <input type="password" name="password" id="password"/> <span id="mensaje"></span>
+    </form>
+    <script>
+        // Ejercicio 1
+        // $(document).ready(() =>{
+        //     // Pon en rojo el fondo de los td que estén por encima del tercero
+        //     $("td:lt(3)").css("background-color", "red");
+        //     $("td:gt(2)").css("background-color", "blue");
+        // })
+
+        // Ejercicio 3
+        // $(document).ready(() =>{
+        //     // Las celdas vacías se pintarán de rojo
+        //     $("td:empty").css("background-color", "yellow");
+
+        // })
+
+        // Ejercicio 7
+        // $(document).ready(() => {
+        //     // Se produciran 4 animaciones al pulsar el botón
+        //     $("button:first-of-type").click(() => {
+        //         $("div").animate({ left: '250px' }, "slow");
+        //         $("div").animate({ fontSize: '3em' }, "slow");
+        //         $("div").animate({ height: '+=150px' }, "slow");
+        //         $("div").animate({ width: '+=150px' }, "slow");
+        //     })
+
+        //     // Se eliminaran las animaciones al pulsar el botón
+        //     $("button:last-of-type").click(() => {
+        //         // $("div").stop(); // Para detener la animación actual.
+        //         $("div").finish(); // Para detener la animación actual y eliminar las que estén en cola completándolas.
+        //     })
+        // })
+
+        // Ejercicio 8
+        // $(document).ready(() => {
+        //     $("button").click(() =>{
+        //         // Utiliza fadeIn() diferente para cada div;
+        //         $("div:first-of-type").fadeIn("slow");
+        //         $("div:nth-of-type(2)").fadeIn(1000);
+        //         $("div:nth-of-type(3)").fadeIn(2000);
+        //         $("div:nth-of-type(4)").fadeIn(3000);
+        //         $("div:last-of-type").fadeIn(4000);
+        //     })
+        // })
+
+        // Ejercicio 9
+        // $(document).ready(() => {
+        //     // Al pulsar el botón start se iniciará una animación que hará que el div se mueva de izquierda a derecha y se oculte desplazandose hacia arriba
+        //     $("#start").click(() => {
+        //         $("div").css("background-color", "blue")
+        //             .animate({ left: '250px' }, "slow")
+        //             .animate({ top: '-250px' }, "slow");
+        //     }),
+
+        //     // Al pulsar el botón stop se detendrá la animación
+        //     $("#stop").click(() => {
+        //         $("div").stop();
+        //     })
+        // })
+
+        // Ejercicio 10
+        $(document).ready(() =>{
+            $("#password").keyup(() =>{
+                passWord = $("#password").val();
+                if(passWord.length <5){
+                    $("#mensaje").text("No segura").css("color","red");
+                }
+                if(passWord.length >=5 && passWord.length <=8){
+                    $("#mensaje").text("Medianamente segura").css("color","orange");
+                }
+                if(passWord.length >8){
+                    $("#mensaje").text("Segura").css("color","green");
+                }
+            })
+        })
+
+    </script>
+</body>
+
+</html>
